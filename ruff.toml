@@ -1,0 +1,88 @@
+target-version = "py311"
+line-length = 120
+cache-dir = ".ruff_cache"
+respect-gitignore = true
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# 자동 형식 지정 설정
+[format]
+quote-style = "double"                      # Black 기본값: double quote 사용
+indent-style = "space"                      # Black 기본값: 탭 대신 스페이스 4개로 들여쓰기
+line-ending = "auto"                        # 운영체제에 맞는 줄바꿈 문자 자동 선택
+docstring-code-format = true                # docstring 내 코드 블록도 포매팅 적용
+docstring-code-line-length = 120            # docstring 내 코드의 최대 라인 길이
+skip-magic-trailing-comma = false           # Black 호환: 마지막 쉼표 유지 (multiline에서 diff 최소화)
+
+# 린트 설정
+[lint]
+select = [
+    "E", # pycodestyle 오류: PEP 8 스타일 가이드 위반 (들여쓰기, 공백, 라인 길이 등)
+    "F", # pyflakes: 미사용 import, 정의되지 않은 변수, 중복 정의 등 논리적 오류
+    "I", # isort: import 문 정렬 및 그룹화 (표준 라이브러리, 서드파티, 로컬 등)
+    "UP", # pyupgrade: 최신 Python 문법으로 업그레이드 (f-string, type hints 등)
+    "N", # pep8-naming: 클래스명, 함수명, 변수명 등 네이밍 규칙 검사
+    "B", # flake8-bugbear: 잠재적 버그나 안티패턴 감지 (mutable default args 등)
+    "A", # flake8-builtins: 내장 함수명 shadowing 방지 (list, dict 등을 변수명으로 사용 금지)
+    "COM", # flake8-commas: trailing comma 사용 규칙 (multiline에서 일관성 유지)
+    "C4", # flake8-comprehensions: list/dict/set comprehension 최적화 제안
+    "ISC", # flake8-implicit-str-concat: 암시적 문자열 연결 감지 및 개선 제안
+    "ICN", # flake8-import-conventions: 일반적인 import alias 규칙 (pd for pandas 등)
+    "PD", # pandas-vet: pandas 사용 시 성능 및 베스트 프랙티스 검사
+    "PGH", # pygrep-hooks: 일반적인 실수 패턴 감지 (# noqa 오용, TODO 포맷 등)
+    "PIE", # flake8-pie: 불필요한 코드 제거 및 단순화 제안
+    "PL", # pylint: 종합적인 코드 품질 검사 (복잡도, 설계 패턴 등)
+    "PT", # flake8-pytest-style: pytest 테스트 코드 베스트 프랙티스
+    "PTH", # flake8-use-pathlib: os.path 대신 pathlib 사용 권장
+    "Q", # flake8-quotes: 문자열 따옴표 일관성 검사
+    "RET", # flake8-return: return 문 스타일 개선 (불필요한 else, 조기 return 등)
+    "RSE", # flake8-raise: exception 발생 시 베스트 프랙티스 (raise from 사용 등)
+    "RUF", # Ruff-specific rules: Ruff 고유의 추가 규칙들
+    "SIM", # flake8-simplify: 코드 단순화 제안 (중복 조건문, 불필요한 comprehension 등)
+    "TID", # flake8-tidy-imports: 금지된 import 패턴 감지
+    "W", # pycodestyle 경고: PEP 8 스타일 가이드의 경고 수준 위반
+    "S", # flake8-bandit: 보안 취약점 검사 (hardcoded password, shell injection 등)
+    "T20", # flake8-print: print문 및 pprint 사용 감지 (production 코드에서 제거 권장)
+]
+
+ignore = [
+    "E203", # Black 호환: 슬라이스에서 콜론 앞 공백 무시 (x[1 : 2] vs x[1:2])
+    "E266", # 여러 '#' 사용 허용 (docstring 스타일)
+    "E501", # Black이 라인 길이를 관리하므로 무시
+    "COM812", # Black과 충돌: trailing comma 관련 규칙 무시
+    "S101", # assert 사용 허용 (테스트에서 필요)
+    "T201", # print 문 허용 (개발 중에는 유용)
+]
+
+fixable = ["ALL"]
+unfixable = []
+
+[lint.isort]
+# isort가 자동으로 패키지를 감지하도록 기본 설정 사용
+force-single-line = false
+force-wrap-aliases = false
+combine-as-imports = true                   # Black 호환: from x import a, b 형태로 결합
+lines-after-imports = 2
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
