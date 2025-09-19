@@ -172,7 +172,7 @@
 {"eval_id": 69, "msg": [{"role": "user", "content": "비만도를 어떻게 측정할 수 있나?"}]}
 {"eval_id": 47, "msg": [{"role": "user", "content": "원자번호는 원자내의 어떤 소립자와 관계 있는가?"}]}
 {"eval_id": 0, "msg": [{"role": "user", "content": "바이러스가 원핵 세포와 서로 작용할 때 사용하는 것은?"}]}
-{"eval_id": 52, "msg": [{"role": "user", "content": "연기 열수공의 특성에 대해 설명해줘."}]}
+{"eval_id": 52, "msg": [{"role": "user", "content": "연기 열수공(열수분출공)의 특성에 대해 설명해줘."}]}
 {"eval_id": 103, "msg": [{"role": "user", "content": "너 뭘 잘해?"}]}
 {"eval_id": 209, "msg": [{"role": "user", "content": "bridge inverter의 역할에 대해 알려줘?"}]}
 {"eval_id": 251, "msg": [{"role": "user", "content": "캠핑의 선기능에 대해 알려줘."}]}
